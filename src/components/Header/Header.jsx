@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavLinks from "../NavLinks/NavLinks";
 import { Link } from "react-router";
-import HeaderLogo from "../../assets/jug.png";
+import HeaderLogo from "../../assets/logo.png";
 import { LogOut, Menu } from "lucide-react";
 
 const Header = () => {
@@ -45,13 +45,13 @@ const Header = () => {
               </ul>
             </div>
             <div className="navbar-end">
-              {/* <Link
+              <Link
                 to="/login"
                 className="btn btn-primary w-24 text-white"
               >
                 Login
-              </Link> */}
-              <div className="avatar relative">
+              </Link>
+              {/* <div className="avatar relative">
                 <div
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2 cursor-pointer"
@@ -73,7 +73,7 @@ const Header = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
