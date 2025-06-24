@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import { firebaseError } from "./../../utils/firebaseError";
 
 const Register = () => {
-  const { registerUser, updateUser, setLoading } = useAuthContext();
+  const { registerUser, updateUser, setLoading, googleLogin } =
+    useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,6 +43,16 @@ const Register = () => {
       }
     } catch (error) {
       toast.error(firebaseError[error.code]);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const res = await googleLogin();
+
+    if (res.user.accessToken) {
+      setLoading(false);
+      toast.success("Login successfull");
+      navigate(location?.state?.from || "/");
     }
   };
 
@@ -132,7 +143,10 @@ const Register = () => {
 
               <div className="w-2/3 mx-auto mt-5">
                 <div className="divider">OR</div>
-                <button className="btn bg-white text-black border-[#e5e5e5] w-full shadow">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="btn bg-white text-black border-[#e5e5e5] w-full shadow"
+                >
                   <svg
                     aria-label="Google logo"
                     width="16"

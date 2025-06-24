@@ -49,7 +49,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
               {loading ? (
-                <span className="loading loading-spinner loading-xl"></span>
+                <span className="loading loading-spinner loading-xl text-primary"></span>
               ) : user ? (
                 <div className="avatar relative">
                   <div
