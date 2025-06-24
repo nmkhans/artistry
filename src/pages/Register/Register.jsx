@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import HeaderLogo from "../../assets/logo.png";
-import RegisterSVG from "../../assets/login.svg";
+import RegisterSVG from "../../assets/register.svg";
 import { useAuthContext } from "../../context/Auth/AuthContext";
 import { isValidPassword } from "./../../utils/isValidPassword";
 import { toast } from "react-toastify";
+import { firebaseError } from "./../../utils/firebaseError";
 
 const Register = () => {
-  const [error, setError] = useState("");
   const { registerUser, updateUser, setLoading } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
 
     const form = e.target;
     const formData = new FormData(form);
@@ -24,22 +23,28 @@ const Register = () => {
     );
 
     if (!isValidPassword(password)) {
-      setError(
-        "Password must contain one uppercase, one lowercase, and length must be atleast 6 "
+      toast.error(
+        "Password must contain one uppercase, one lowercase, and length must be atleast 6"
       );
+
       return;
     }
 
-    const res = await registerUser(email, password);
+    try {
+      const res = await registerUser(email, password);
 
-    if (res.user.email) {
-      await updateUser({ name, photo });
+      if (res.user.email) {
+        await updateUser({ name, photo });
 
-      setLoading(false);
-      toast.success("Registration successful.");
-      navigate(location?.state?.from || "/");
+        setLoading(false);
+        toast.success("Registration successful.");
+        navigate(location?.state?.from || "/");
+      }
+    } catch (error) {
+      toast.error(firebaseError[error.code]);
     }
   };
+
   return (
     <section className="py-[80px]">
       <div className="container mx-auto">
@@ -116,15 +121,6 @@ const Register = () => {
                       </Link>
                     </p>
                   </div>
-
-                  {error && (
-                    <div className="my-3">
-                      {" "}
-                      <p className="text-red-500 font-bold text-lg">
-                        {error}
-                      </p>{" "}
-                    </div>
-                  )}
 
                   <div className="mt-2">
                     <button className="btn btn-primary w-full text-white">
