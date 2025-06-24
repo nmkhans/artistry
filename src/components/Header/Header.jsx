@@ -3,9 +3,12 @@ import NavLinks from "../NavLinks/NavLinks";
 import { Link } from "react-router";
 import HeaderLogo from "../../assets/logo.png";
 import { LogOut, Menu } from "lucide-react";
+import { useAuthContext } from "../../context/Auth/AuthContext";
+import UserAvater from "../UserAvater/UserAvater";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, loading } = useAuthContext();
 
   return (
     <header>
@@ -45,35 +48,26 @@ const Header = () => {
               </ul>
             </div>
             <div className="navbar-end">
-              <Link
-                to="/login"
-                className="btn btn-primary w-24 text-white"
-              >
-                Login
-              </Link>
-              {/* <div className="avatar relative">
-                <div
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2 cursor-pointer"
-                >
-                  <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
-                </div>
-                {isMenuOpen && (
-                  <div className="bg-base-100 absolute top-12 right-0 p-5 w-[200px] rounded-lg z-9 border border-primary">
-                    <div className="py-2 mb-2 text-center font-semibold border-b-2 border-secondary">
-                      <Link to="/my-artifacts">My Artifacts</Link>
-                    </div>
-                    <div className="py-2 mb-2 text-center font-semibold border-b-2 border-secondary">
-                      <button className="cursor-pointer flex justify-center w-full">
-                        Logout{" "}
-                        <span className="ms-2">
-                          <LogOut />
-                        </span>
-                      </button>
-                    </div>
+              {loading ? (
+                <span className="loading loading-spinner loading-xl"></span>
+              ) : user ? (
+                <div className="avatar relative">
+                  <div
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2 cursor-pointer"
+                  >
+                    <img src={user.photoURL} alt="User avater" />
                   </div>
-                )}
-              </div> */}
+                  {isMenuOpen && <UserAvater />}
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn btn-primary w-24 text-white"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>
