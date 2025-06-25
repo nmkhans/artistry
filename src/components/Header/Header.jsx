@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavLinks from "../NavLinks/NavLinks";
 import { Link } from "react-router";
 import HeaderLogo from "../../assets/logo.png";
-import { LogOut, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useAuthContext } from "../../context/Auth/AuthContext";
 import UserAvater from "../UserAvater/UserAvater";
 import AvaterImage from "../../assets/avatar.jpg";

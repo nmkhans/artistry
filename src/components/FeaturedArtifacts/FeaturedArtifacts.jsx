@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import useAxios from "./../../hooks/useAxios";
 import Spinner from "./../Spinner/Spinner";
 import ArtifactCard from "../ArtifactCard/ArtifactCard";
+import { Link } from "react-router";
 
 const FeaturedArtifacts = () => {
   const { axiosInstance } = useAxios();
@@ -25,13 +26,23 @@ const FeaturedArtifacts = () => {
               <Spinner />
             </div>
           ) : (
-            <div className="grid grid-cols-4 gap-5">
-              {data.map((artifact) => (
-                <ArtifactCard
-                  key={artifact._id}
-                  artifact={artifact}
-                />
-              ))}
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                {data.map((artifact) => (
+                  <ArtifactCard
+                    key={artifact._id}
+                    artifact={artifact}
+                  />
+                ))}
+              </div>
+              <div className="mt-10 text-center">
+                <Link
+                  to="/all-artifacts"
+                  className="btn btn-primary text-white w-full lg:w-1/5 mx-auto rounded-4xl"
+                >
+                  See All
+                </Link>
+              </div>
             </div>
           )}
         </div>
