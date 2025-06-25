@@ -6,7 +6,7 @@ const CTA = () => {
   return (
     <section className="py-[80px]">
       <div className="container mx-auto px-5 lg:px-0">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="flex flex-col justify-center">
             <h2 className="text-3xl font-bold mb-5">
               Timeless Artifacts from Ancient Civilizations
@@ -25,14 +25,14 @@ const CTA = () => {
           </div>
           <div>
             <div className="relative">
-              <div className="bg-secondary p-2 rounded-lg w-[400px] border-gray-500">
+              <div className="bg-secondary p-2 rounded-lg w-auto lg:w-[400px] border-gray-500">
                 <img
                   className="w-full"
                   src={CTAOne}
                   alt="call to action"
                 />
               </div>
-              <div className="absolute top-22 right-0 bg-secondary p-2 rounded-lg w-[400px] border-gray-500">
+              <div className="lg:absolute top-22 right-0 bg-secondary p-2 rounded-lg w-auto lg:w-[400px] border-gray-500">
                 <img src={CTATwo} alt="call to action" />
               </div>
             </div>
