@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <section className="py-[80px]">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-5 lg:px-0">
         <div>
           <Link to="/" className="flex items-center gap-x-2">
             <img
@@ -60,9 +60,9 @@ const Login = () => {
           </Link>
         </div>
         <div>
-          <div className="flex">
+          <div className="flex items-center flex-col md:flex-row lg:flex-row">
             <div className="basis-1/2">
-              <div className="mt-10 my-5 w-2/3 mx-auto">
+              <div className="mt-10 my-5 w-full md:w-2/3 lg:w-2/3 mx-auto">
                 <h3 className="text-2xl font-bold text-primary mb-2">
                   Welcome back!
                 </h3>
@@ -70,7 +70,10 @@ const Login = () => {
                   Login to continue.
                 </p>
               </div>
-              <form onSubmit={handleSubmit} className="w-2/3 mx-auto">
+              <form
+                onSubmit={handleSubmit}
+                className="w-full md:w-2/3 lg:w-2/3 mx-auto"
+              >
                 <fieldset className="fieldset bg-base-100 w-full">
                   <div className="mb-2">
                     <label className="label mb-1">Email</label>
@@ -109,7 +112,7 @@ const Login = () => {
                 </fieldset>
               </form>
 
-              <div className="w-2/3 mx-auto mt-5">
+              <div className="w-full md:w-2/3 lg:md:w-2/3 mx-auto mt-5">
                 <div className="divider">OR</div>
                 <button
                   onClick={handleGoogleLogin}
@@ -149,7 +152,7 @@ const Login = () => {
 
             <div className="basis-1/2">
               <img
-                className="w-4/5"
+                className="mt-10 md:mt-0 lg:mt-0 w-full md:w-4/5 lg:w-4/5"
                 src={LoginSVG}
                 alt="Login image"
               />
