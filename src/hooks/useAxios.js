@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuthContext } from "../context/Auth/AuthContext";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.DEV
@@ -7,7 +8,11 @@ const axiosInstance = axios.create({
 });
 
 const useAxios = () => {
+  const { user } = useAuthContext();
+
   axiosInstance.interceptors.request.use((config) => {
+    config.headers.token = user?.accessToken;
+
     return config;
   });
 

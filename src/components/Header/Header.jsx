@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className="navbar bg-base-100 fixed top-0 left-0 right-0 w-full z-99 ">
+      <div className="navbar fixed bg-transparent top-0 left-0 right-0 w-full z-99 backdrop-blur-2xl shadow-lg">
         <div className="container mx-auto px-5 lg:px-0">
           <div className="flex">
             <div className="navbar-start">
@@ -67,7 +67,7 @@ const Header = () => {
               ) : (
                 <Link
                   to="/login"
-                  className="btn btn-primary w-24 text-white"
+                  className="btn btn-primary w-24 text-white rounded-4xl"
                 >
                   Login
                 </Link>
