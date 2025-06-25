@@ -5,6 +5,7 @@ import HeaderLogo from "../../assets/logo.png";
 import { LogOut, Menu } from "lucide-react";
 import { useAuthContext } from "../../context/Auth/AuthContext";
 import UserAvater from "../UserAvater/UserAvater";
+import AvaterImage from "../../assets/avatar.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +57,10 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2 cursor-pointer"
                   >
-                    <img src={user.photoURL} alt="User avater" />
+                    <img
+                      src={user.photoURL || AvaterImage}
+                      alt="User avater"
+                    />
                   </div>
                   {isMenuOpen && <UserAvater />}
                 </div>
