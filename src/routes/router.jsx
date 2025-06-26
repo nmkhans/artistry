@@ -38,7 +38,6 @@ const router = createBrowserRouter([
             <MyArtifacts />
           </PrivateRoute>
         ),
-        // private route
       },
       {
         path: "/artifact-detail/:id",
@@ -47,7 +46,6 @@ const router = createBrowserRouter([
             <ArtifactDetail />
           </PrivateRoute>
         ),
-        // private route
       },
       {
         path: "/liked-artifacts/",
@@ -56,7 +54,6 @@ const router = createBrowserRouter([
             <LikedArtifacts />
           </PrivateRoute>
         ),
-        // private route
       },
     ],
   },
