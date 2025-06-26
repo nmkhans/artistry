@@ -68,14 +68,20 @@ const AllArtifacts = () => {
                   <MoveLeft /> Back
                 </button>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                {data.map((artifact) => (
-                  <ArtifactCard
-                    key={artifact._id}
-                    artifact={artifact}
-                  />
-                ))}
-              </div>
+              {data?.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {data?.map((artifact) => (
+                    <ArtifactCard
+                      key={artifact._id}
+                      artifact={artifact}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <h3 className="text-2xl font-bold text-center">
+                  No Data found!
+                </h3>
+              )}
             </div>
           )}
         </div>

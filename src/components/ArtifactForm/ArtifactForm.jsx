@@ -37,7 +37,10 @@ const ArtifactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axiosInstance.post("/artifacts/create", data);
+    const res = await axiosInstance.post(
+      `/artifacts/create?email=${user?.email}`,
+      data
+    );
 
     if (res.data.data.acknowledged) {
       toast.success(res.data.message);
