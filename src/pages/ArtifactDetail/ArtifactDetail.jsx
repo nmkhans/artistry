@@ -15,7 +15,9 @@ const ArtifactDetail = () => {
   const { data, loading, setData } = useFetch(
     {},
     async () => {
-      const res = await axiosInstance.get(`/artifacts/detail/${id}`);
+      const res = await axiosInstance.get(
+        `/artifacts/detail/${id}?email=${user.email}`
+      );
       return res;
     },
     id
@@ -40,7 +42,7 @@ const ArtifactDetail = () => {
             ]
           : [...data.likes, user?.email],
       });
-      
+
       toast.success(res.data.message);
     }
   };

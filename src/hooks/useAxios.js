@@ -6,15 +6,34 @@ const axiosInstance = axios.create({
     ? import.meta.env.VITE_LOCAL_SERVER_URL
     : import.meta.env.VITE_PRODUCTION_SERVER_URL,
 });
+import { toast } from "react-toastify";
 
 const useAxios = () => {
-  const { user } = useAuthContext();
+  const { user, logoutUser } = useAuthContext();
 
-  axiosInstance.interceptors.request.use((config) => {
-    config.headers.token = user?.accessToken;
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      if (user) {
+        config.headers.authorization = `Bearer ${user?.accessToken}`;
+      }
 
-    return config;
-  });
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  axiosInstance.interceptors.response.use(
+    (res) => res,
+    (err) => {
+      if (err.status === 401 || err.status === 403) {
+        toast.error(err.message);
+        logoutUser();
+      }
+      return Promise.reject(err);
+    }
+  );
 
   return { axiosInstance };
 };
