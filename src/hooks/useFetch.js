@@ -21,6 +21,7 @@ const useFetch = (initialData, fetcher, dependency = null) => {
   return {
     data,
     loading,
+    setData
   };
 };
 
