@@ -6,10 +6,12 @@ import ArtifactCard from "../../components/ArtifactCard/ArtifactCard";
 import Spinner from "../../components/Spinner/Spinner";
 import ArtifactTableItem from "../../components/ArtifactTableItem/ArtifactTableItem";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const MyArtifacts = () => {
   const { user } = useAuthContext();
   const { axiosInstance } = useAxios();
+  const navigate = useNavigate();
   const { data, loading, setData } = useFetch([], async () => {
     const res = await axiosInstance.get(
       `artifacts/author?email=${user?.email}`
@@ -42,6 +44,7 @@ const MyArtifacts = () => {
             text: res.data.message,
             icon: "success",
           });
+          navigate("/all-artifacts");
         }
       }
     });
