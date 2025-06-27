@@ -27,9 +27,12 @@ const ArtifactDetail = () => {
   const isAlreadyLiked = data?.likes?.includes(user?.email);
 
   const toggleLike = async (id) => {
-    const res = await axiosInstance.patch(`/artifacts/like/${id}`, {
-      email: user?.email,
-    });
+    const res = await axiosInstance.patch(
+      `/artifacts/like/${id}?email=${user.email}`,
+      {
+        email: user?.email,
+      }
+    );
 
     if (res.data.data.acknowledged) {
       setData({
