@@ -1,12 +1,27 @@
-# React + Vite
+# Artistry - Historical artifacts showcase website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A website for showcasing historical artifacts, its information, discoveration and many more. A user can view all artifacts. They can login/register. They can publish thei own artifacts content and showcase them in website.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Login/registration/google authentication
+- Protected routes.
+- Like artifacts
+- post artifacts
+- view own published/liked artifacts
+- manage artifacts (view/edit/delete)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Packages
+- React
+- React router
+- Swiper
+- tailwind (with daisy)
+- axios
+- firebase
+- react-toastify
+- sweet alert
+
+## Live url
+
+ [https://nmk-artistry.netlify.app](https://nmk-artistry.netlify.app)
