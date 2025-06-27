@@ -5,7 +5,6 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     window.document.title =
