@@ -1,5 +1,5 @@
 import React from "react";
-import { Pencil, Trash } from "lucide-react";
+import { Eye, Pencil, Trash } from "lucide-react";
 import { Link } from "react-router";
 
 const ArtifactTableItem = ({ artifact, onDelete }) => {
@@ -33,7 +33,13 @@ const ArtifactTableItem = ({ artifact, onDelete }) => {
       </td>
       <td className="space-x-3">
         <Link
-          to={`/update-artifacts`}
+          to={`/artifact-detail/${artifact._id}`}
+          className="btn bg-blue-500 text-white"
+        >
+          <Eye size={16} />
+        </Link>
+        <Link
+          to={`/update-artifacts/${artifact._id}`}
           className="btn bg-yellow-500 text-white"
         >
           <Pencil size={16} />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/Auth/AuthContext";
 import useAxios from "../../hooks/useAxios";
 import { toast } from "react-toastify";
@@ -18,14 +18,24 @@ const initialData = {
   authorEmail: "",
 };
 
-const ArtifactForm = () => {
+const ArtifactForm = ({ artifactData }) => {
   const { user } = useAuthContext();
-  const [data, setData] = useState({
-    ...initialData,
-    authorName: user?.displayName,
-    authorEmail: user?.email,
-  });
+  const [data, setData] = useState({});
   const { axiosInstance } = useAxios();
+
+  useEffect(() => {
+    setData(
+      artifactData
+        ? artifactData
+        : {
+            ...initialData,
+            authorName: user?.displayName,
+            authorEmail: user?.email,
+          }
+    );
+  }, [artifactData, user]);
+
+  // console.log(artifactData, data)
 
   const handleChange = (e) => {
     setData({
@@ -37,18 +47,29 @@ const ArtifactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axiosInstance.post(
-      `/artifacts/create?email=${user?.email}`,
-      data
-    );
+    if (!artifactData) {
+      const res = await axiosInstance.post(
+        `/artifacts/create?email=${user?.email}`,
+        data
+      );
 
-    if (res.data.data.acknowledged) {
-      toast.success(res.data.message);
-      setData({
-        ...initialData,
-        authorName: user?.displayName,
-        authorEmail: user?.email,
-      });
+      if (res.data.data.acknowledged) {
+        toast.success(res.data.message);
+        setData({
+          ...initialData,
+          authorName: user?.displayName,
+          authorEmail: user?.email,
+        });
+      }
+    } else {
+      const res = await axiosInstance.put(
+        `/artifacts/update/${data._id}?email=${user?.email}`,
+        data
+      );
+
+      if (res.data.data.acknowledged) {
+        toast.success(res.data.message);
+      }
     }
   };
 
