@@ -14,7 +14,9 @@ const UserAvater = () => {
         </h3>
       </div>
       <div className="py-2 mb-2 text-center font-semibold border-b-2 border-secondary text-[15px]">
-        <Link to="/my-artifacts">My Artifacts</Link>
+        <Link className="active:bg-primary!" to="/add-artifacts">
+          Add Artifacts
+        </Link>
       </div>
       <div className="py-2 mb-2 text-center font-semibold border-b-2 border-secondary text-[15px]">
         <Link to="/liked-artifacts">Liked Artifacts</Link>

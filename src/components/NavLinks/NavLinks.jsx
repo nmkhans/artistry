@@ -15,9 +15,7 @@ const NavLinks = () => {
         </Link>
       </li>
       <li>
-        <Link className="active:bg-primary!" to="/add-artifacts">
-          Add Artifacts
-        </Link>
+        <Link to="/my-artifacts">My Artifacts</Link>
       </li>
     </>
   );
