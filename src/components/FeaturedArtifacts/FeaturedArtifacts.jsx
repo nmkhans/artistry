@@ -8,7 +8,7 @@ import { Link } from "react-router";
 const FeaturedArtifacts = () => {
   const { axiosInstance } = useAxios();
   const { data, loading } = useFetch([], async () => {
-    const res = await axiosInstance.get(`/artifacts?limit=${6}`);
+    const res = await axiosInstance.get(`/artifacts?limit=${8}`);
     return res;
   });
 

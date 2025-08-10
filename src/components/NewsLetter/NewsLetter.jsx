@@ -1,8 +1,13 @@
 import React from "react";
 import newsLetterBg from "../../assets/newsletter.jpg";
 import { Twitter, Facebook, Instagram } from "lucide-react";
+import { toast } from "react-toastify";
 
 const NewsLetter = () => {
+  const handleNewsletterSubmit = () => {
+    toast.success("Subscription successful.");
+  };
+
   return (
     <section
       style={{ background: `url(${newsLetterBg})` }}
@@ -21,7 +26,10 @@ const NewsLetter = () => {
                   className="input join-item p-6"
                   placeholder="Your main address"
                 />
-                <button className="btn btn-primary join-item p-6 text-white">
+                <button
+                  onClick={handleNewsletterSubmit}
+                  className="btn btn-primary join-item p-6 text-white"
+                >
                   Subscribe
                 </button>
               </div>
@@ -32,13 +40,31 @@ const NewsLetter = () => {
             <div>
               <div className="join mt-5 space-x-5">
                 <button className="btn join-item btn-primary">
-                  <Facebook />
+                  <a
+                    className="inline-block"
+                    href="https://facebook.com"
+                    target="_blank"
+                  >
+                    <Facebook />
+                  </a>
                 </button>
                 <button className="btn join-item btn-primary">
-                  <Twitter />
+                  <a
+                    className="inline-block"
+                    href="https://x.com"
+                    target="_blank"
+                  >
+                    <Twitter />
+                  </a>
                 </button>
                 <button className="btn join-item btn-primary">
-                  <Instagram />
+                  <a
+                    className="inline-block"
+                    href="https://www.instagram.com"
+                    target="_blank"
+                  >
+                    <Instagram />
+                  </a>
                 </button>
               </div>
             </div>
