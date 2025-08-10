@@ -11,6 +11,9 @@ import LikedArtifacts from "../pages/LikedArtifacts/LikedArtifacts";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "../pages/NotFound/NotFound";
 import UpdateArtifacts from "../pages/UpdateArtifacts/UpdateArtifacts";
+import CoomingSoon from "../pages/ComingSoon/CoomingSoon";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import Services from "../pages/Services/Services";
 
 const router = createBrowserRouter([
   {
@@ -66,8 +69,20 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/contacts",
+        element: <ContactUs />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "/cooming-soon",
+        element: <CoomingSoon />,
       },
     ],
   },

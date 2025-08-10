@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
+import { useAuthContext } from "../../context/Auth/AuthContext";
 
 const NavLinks = () => {
+  const { user, loading } = useAuthContext();
   return (
     <>
       <li>
@@ -14,8 +16,16 @@ const NavLinks = () => {
           All Artifacts
         </Link>
       </li>
+      {!loading && user && (
+        <li>
+          <Link to="/my-artifacts">My Artifacts</Link>
+        </li>
+      )}
       <li>
-        <Link to="/my-artifacts">My Artifacts</Link>
+        <Link to="/services">Services</Link>
+      </li>
+      <li>
+        <Link to="/contacts">Contact</Link>
       </li>
     </>
   );
